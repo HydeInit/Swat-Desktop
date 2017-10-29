@@ -1,12 +1,12 @@
-<h1 align="center">SWAT-OS</h1>
+<h1 align="center">SWAT-OS Desktop</h1>
 
-**Swat-OS** is free software, with "no warranties or restrictions of any kind".
+**Swat-OS Desktop** is free software, with "no warranties or restrictions of any kind".
 
-[![Early Prototype](https://img.shields.io/badge/SwatOS-v.0.1-yellow.svg)](https://github.com/ColinMoulds/SWAT-OS)
+[![Early Prototype](https://img.shields.io/badge/SwatOS-v.0.1-yellow.svg)](https://github.com/Swat-OS/Swat-Desktop)
 [![Apache v2.0](https://img.shields.io/badge/license-Apache%20v2.0-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0)
 [![Join the chat at https://gitter.im/SWAT-OS/Lobby](https://badges.gitter.im/SWAT-OS/Lobby.svg)](https://gitter.im/SWAT-OS/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-**Note:** *Swat-OS is under active development. The public API should not be considered stable.*
+**Note:** *Swat-OS Desktop is under active development. The public API should not be considered stable.*
 
 ## Motivation
 
