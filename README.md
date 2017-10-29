@@ -16,7 +16,7 @@ This particular project of building our own operating system is to further enhan
 
 Build status of continus integration
 
-[![Codeship CI Badge](https://app.codeship.com/projects/ce698c00-9e5d-0135-8178-6e6128b91f9d/status?branch=master)](https://codeship.com)
+[![Codeship CI Badge](https://app.codeship.com/projects/834ed2a0-9f2d-0135-da1e-0ada79383e49/status?branch=master)](https://codeship.com)
 
 ## Structure
 
