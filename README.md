@@ -32,6 +32,8 @@ Build status of continus integration
 *Initial Work* - [Colin Moulds](https://github.com/ColinMoulds)
 <br>
 *Initial Work* - [Ross Macleod](https://github.com/JesterWolf)
+<br>
+*Initial Work* - [David Flynn](https://github.com/TheGidYinFlynn)
 
 ## Acknowledgments
 
