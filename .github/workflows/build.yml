@@ -45,7 +45,7 @@ jobs:
       # per-run key with a shared restore prefix sidesteps hashing entirely -
       # each run always saves a fresh cache, and restores the most recent one.
       - name: Restore live-build cache
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: cache
           key: lb-cache-${{ github.run_id }}
