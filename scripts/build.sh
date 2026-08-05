@@ -4,12 +4,44 @@ set -e
 
 cd "$(dirname "$0")/.."
 
+swat_version="0.1.0-dev"
+debian_base="13"
+build_arch="amd64"
+build_commit=$(git rev-parse HEAD 2>/dev/null || echo unknown)
+build_date=$(date -u +%Y-%m-%dT%H:%M:%SZ)
+
+# Generated fresh every build (gitignored) - baked into the image so an
+# installed/running system can identify exactly what it is and when/from
+# what commit it was built.
+mkdir -p config/includes.chroot_after_packages/etc
+cat >config/includes.chroot_after_packages/etc/swat-release <<EOF
+SWAT_VERSION="$swat_version"
+SWAT_CODENAME="Prototype"
+DEBIAN_BASE="$debian_base"
+BUILD_ARCH="$build_arch"
+BUILD_COMMIT="$build_commit"
+BUILD_DATE="$build_date"
+EOF
+
+mkdir -p config/includes.chroot_after_packages/usr/share/swat
+cat >config/includes.chroot_after_packages/usr/share/swat/build-info.json <<EOF
+{
+  "name": "SWAT",
+  "version": "$swat_version",
+  "debianBase": "$debian_base",
+  "architecture": "$build_arch",
+  "gitCommit": "$build_commit",
+  "buildDate": "$build_date"
+}
+EOF
+
 ./auto/config
 sudo lb build
 
 mkdir -p output
 mv -f live-image-*.hybrid.iso "output/" 2>/dev/null || true
 mv -f live-image-*.contents "output/" 2>/dev/null || true
+cp -f config/includes.chroot_after_packages/usr/share/swat/build-info.json output/ 2>/dev/null || true
 
 echo "Build complete. ISO(s) in output/:"
 ls -la output/*.iso 2>/dev/null || echo "(no ISO found - check the build log above for errors)"

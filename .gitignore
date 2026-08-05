@@ -12,6 +12,10 @@ config/binary
 config/source
 config/package-lists/live.list.chroot
 
+# Release metadata generated fresh by scripts/build.sh on every build
+config/includes.chroot_after_packages/etc/swat-release
+config/includes.chroot_after_packages/usr/share/swat/
+
 # live-build build/runtime artifacts
 config/cache
 .build/
