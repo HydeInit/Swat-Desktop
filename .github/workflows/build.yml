@@ -17,6 +17,16 @@ jobs:
       image: debian:trixie
       options: --privileged
     steps:
+      # Monitors network egress during the job and flags anomalies - defense
+      # in depth in case a malicious PR (from a fork) ever slips something
+      # into a hook script, which would otherwise run with root/--privileged
+      # access during the build. Audit mode: reports, doesn't block, since
+      # this build legitimately needs broad network access (package mirrors).
+      - name: Harden Runner
+        uses: step-security/harden-runner@v2
+        with:
+          egress-policy: audit
+
       - uses: actions/checkout@v4
 
       - name: Install live-build toolchain
