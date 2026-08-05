@@ -1,6 +1,6 @@
 <h1 align="center">SWAT</h1>
 
-<p align="center"><strong>SWAT</strong> (Systems Where Anything Transcribes) is a free, developer-focused Linux distribution built by remastering Debian.</p>
+<p align="center"><strong>SWAT</strong> (Streamlined Workstation, Advanced Tooling) is a free, developer-focused Linux distribution built by remastering Debian.</p>
 
 <p align="center">
 <a href="https://github.com/HydeInit/Swat-Desktop/actions/workflows/build.yml"><img src="https://github.com/HydeInit/Swat-Desktop/actions/workflows/build.yml/badge.svg" alt="Build status"></a>
