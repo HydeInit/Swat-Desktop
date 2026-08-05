@@ -1,6 +1,6 @@
-<h1 align="center">SWAT-OS</h1>
+<h1 align="center">SWAT</h1>
 
-<p align="center"><strong>SWAT-OS</strong> (Systems Where Anything Transcribes) is a free, developer-focused Linux distribution built by remastering Debian.</p>
+<p align="center"><strong>SWAT</strong> (Systems Where Anything Transcribes) is a free, developer-focused Linux distribution built by remastering Debian.</p>
 
 <p align="center">
 <a href="https://github.com/HydeInit/Swat-Desktop/actions/workflows/build.yml"><img src="https://github.com/HydeInit/Swat-Desktop/actions/workflows/build.yml/badge.svg" alt="Build status"></a>
@@ -9,11 +9,11 @@
 <img src="https://img.shields.io/badge/base-Debian%2013%20(trixie)-A81D33?logo=debian&logoColor=white" alt="Debian 13 trixie">
 </p>
 
-**Note:** *SWAT-OS is under active development and does not yet have a release build.*
+**Note:** *SWAT is under active development and does not yet have a release build.*
 
 ## Motivation
 
-SWAT-OS aims to be a lean, developer-focused Debian-based distribution: a sane package selection, sensible defaults, and no unnecessary cruft — built and maintained as a personal development project. Ideas originally developed by a group of University Students studying at Edinburgh Napier.
+SWAT aims to be a lean, developer-focused Debian-based distribution: a sane package selection, sensible defaults, and no unnecessary cruft — built and maintained as a personal development project. Ideas originally developed by a group of University Students studying at Edinburgh Napier.
 
 ## Requirements
 
@@ -24,8 +24,8 @@ SWAT-OS aims to be a lean, developer-focused Debian-based distribution: a sane p
 ## Quick start
 
 ```sh
-git clone https://github.com/HydeInit/Swat-Desktop.git swat-os
-cd swat-os
+git clone https://github.com/HydeInit/Swat-Desktop.git swat
+cd swat
 sudo apt-get install live-build debootstrap squashfs-tools xorriso isolinux qemu-utils dosfstools mtools
 ./scripts/build.sh          # produces output/*.iso
 ./scripts/test-in-qemu.sh   # boot it

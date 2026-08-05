@@ -1,6 +1,6 @@
 ---
 name: Feature request
-about: Suggest a package, default, or change to SWAT-OS
+about: Suggest a package, default, or change to SWAT
 title: ''
 labels: enhancement
 assignees: ''

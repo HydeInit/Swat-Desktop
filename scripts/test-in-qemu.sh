@@ -1,5 +1,5 @@
 #!/bin/sh
-# Boot a built SWAT-OS ISO in QEMU for a quick smoke test.
+# Boot a built SWAT ISO in QEMU for a quick smoke test.
 # Usage: scripts/test-in-qemu.sh [path/to/image.iso]
 set -e
 

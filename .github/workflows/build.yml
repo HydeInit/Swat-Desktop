@@ -53,7 +53,7 @@ jobs:
       - name: Upload ISO artifact
         uses: actions/upload-artifact@v4
         with:
-          name: swat-os-iso
+          name: swat-iso
           path: |
             output/*.iso
             output/SHA256SUMS

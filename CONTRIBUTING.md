@@ -1,4 +1,4 @@
-# Contributing to SWAT-OS
+# Contributing to SWAT
 
 Thanks for your interest in contributing. This project is a Debian remaster built with `live-build`, so most contributions fall into a few categories: package selection, build configuration, branding/theming, and documentation.
 
