@@ -1,0 +1,23 @@
+# Core developer tooling
+build-essential
+git
+curl
+wget
+vim
+tmux
+htop
+python3
+python3-venv
+python3-pip
+openssh-client
+openssh-server
+gnupg
+unzip
+ca-certificates
+less
+man-db
+ripgrep
+fd-find
+fzf
+jq
+tree

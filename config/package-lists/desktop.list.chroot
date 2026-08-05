@@ -1,0 +1,12 @@
+# XFCE desktop environment - lightweight, low resource use
+xfce4
+xfce4-terminal
+lightdm
+lightdm-gtk-greeter
+network-manager
+network-manager-gnome
+thunar
+xfce4-power-manager
+pavucontrol
+epiphany-browser
+fonts-dejavu

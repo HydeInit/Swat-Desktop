@@ -1,0 +1,13 @@
+#!/bin/sh
+# Default locale/timezone for the live system. Both can still be changed
+# by the user (in the live session, or during install if using an
+# installer that prompts for this).
+set -e
+
+sed -i 's/^# *\(en_US.UTF-8 UTF-8\)/\1/' /etc/locale.gen
+locale-gen
+update-locale LANG=en_US.UTF-8
+
+ln -sf /usr/share/zoneinfo/UTC /etc/localtime
+echo "UTC" > /etc/timezone
+dpkg-reconfigure -f noninteractive tzdata

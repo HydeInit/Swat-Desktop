@@ -1,0 +1,60 @@
+name: build
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    # Build inside Debian trixie itself, matching the distribution being built,
+    # so we get the same live-build version the config was written against.
+    # Privileged: live-build needs to mount /proc and /dev/pts into the chroot.
+    container:
+      image: debian:trixie
+      options: --privileged
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install live-build toolchain
+        run: |
+          apt-get update
+          apt-get install -y sudo live-build debootstrap squashfs-tools xorriso isolinux qemu-utils dosfstools mtools
+
+      # live-build caches the debootstrap output and downloaded .debs in cache/.
+      # Restoring it between runs means a build only re-fetches what actually
+      # changed, instead of redownloading the whole package set every time.
+      #
+      # Deliberately not keying on hashFiles(config/**): live-build writes
+      # generated files into config/ during the build (root-owned, inside the
+      # privileged container), which breaks re-hashing them in the post-job
+      # cache-save step every time, regardless of which glob is used. A
+      # per-run key with a shared restore prefix sidesteps hashing entirely -
+      # each run always saves a fresh cache, and restores the most recent one.
+      - name: Restore live-build cache
+        uses: actions/cache@v4
+        with:
+          path: cache
+          key: lb-cache-${{ github.run_id }}
+          restore-keys: |
+            lb-cache-
+
+      - name: Build ISO
+        run: ./scripts/build.sh
+
+      - name: Checksum
+        run: |
+          cd output
+          sha256sum *.iso | tee SHA256SUMS
+
+      - name: Upload ISO artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: swat-os-iso
+          path: |
+            output/*.iso
+            output/SHA256SUMS
+          retention-days: 14

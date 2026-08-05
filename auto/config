@@ -1,0 +1,12 @@
+#!/bin/sh
+set -e
+
+lb config noauto \
+	--distribution trixie \
+	--architectures amd64 \
+	--archive-areas 'main' \
+	--binary-images iso-hybrid \
+	--debian-installer live \
+	--updates true \
+	--security true \
+	"${@}"

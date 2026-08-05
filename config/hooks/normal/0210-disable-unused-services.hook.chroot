@@ -1,0 +1,9 @@
+#!/bin/sh
+# Disable services that are dead weight without hardware to back them:
+# no local network service discovery use case, no cellular modem.
+# Both stay installed (pulled in as NetworkManager recommends) - just
+# not running by default.
+set -e
+
+systemctl disable avahi-daemon.service avahi-daemon.socket
+systemctl disable ModemManager.service
