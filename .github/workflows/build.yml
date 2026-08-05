@@ -58,7 +58,7 @@ jobs:
       - name: Checksum
         run: |
           cd output
-          sha256sum *.iso | tee SHA256SUMS
+          sha256sum -- *.iso | tee SHA256SUMS
 
       - name: Upload ISO artifact
         uses: actions/upload-artifact@v7
