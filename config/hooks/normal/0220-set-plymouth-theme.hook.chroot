@@ -1,0 +1,6 @@
+#!/bin/sh
+# Set the SWAT boot splash as default and rebuild the initramfs so it's
+# actually included (plymouth-set-default-theme -R does both).
+set -e
+
+plymouth-set-default-theme -R swat

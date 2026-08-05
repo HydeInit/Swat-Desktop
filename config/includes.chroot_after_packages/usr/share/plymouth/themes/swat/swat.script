@@ -1,0 +1,36 @@
+Window.SetBackgroundTopColor(0.03, 0.035, 0.043);
+Window.SetBackgroundBottomColor(0.03, 0.035, 0.043);
+
+screen_width = Window.GetWidth();
+screen_height = Window.GetHeight();
+
+background_image = Image("background.png").Scale(screen_width, screen_height);
+background_sprite = Sprite(background_image);
+background_sprite.SetX(0);
+background_sprite.SetY(0);
+background_sprite.SetZ(-100);
+
+bar_width = screen_width * 0.22;
+bar_height = 8;
+bar_x = screen_width / 2 - bar_width / 2;
+bar_y = screen_height * 0.66;
+
+bar_bg_image = Image("bar_bg.png").Scale(bar_width, bar_height);
+bar_bg_sprite = Sprite(bar_bg_image);
+bar_bg_sprite.SetX(bar_x);
+bar_bg_sprite.SetY(bar_y);
+
+bar_fill_source = Image("bar_fill.png");
+bar_fill_sprite = Sprite();
+bar_fill_sprite.SetX(bar_x);
+bar_fill_sprite.SetY(bar_y);
+
+fun progress_callback(duration, progress) {
+  fill_width = bar_width * progress;
+  if (fill_width < 1) {
+    fill_width = 1;
+  }
+  bar_fill_sprite.SetImage(bar_fill_source.Scale(fill_width, bar_height));
+}
+
+Plymouth.SetBootProgressFunction(progress_callback);
