@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=SWAT Wallpaper
+Comment=Applies the SWAT wallpaper to whatever display output is actually connected
+Exec=/usr/local/bin/swat-set-wallpaper
+NoDisplay=true
+X-GNOME-Autostart-enabled=true

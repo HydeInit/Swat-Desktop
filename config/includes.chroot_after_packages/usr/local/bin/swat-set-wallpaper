@@ -1,0 +1,14 @@
+#!/bin/sh
+# xfdesktop keys its wallpaper setting to the exact RandR output name
+# (eDP-1, HDMI-A-1, Virtual-1 in a VM, etc.), which varies by hardware
+# and can't be predicted in a static xfconf default file. Detect
+# whatever's actually connected at login and set it directly.
+set -e
+
+wallpaper=/usr/share/backgrounds/swat/wallpaper.png
+
+for output in $(xrandr --query 2>/dev/null | awk '/ connected/ {print $1}'); do
+	xfconf-query -c xfce4-desktop -p "/backdrop/screen0/monitor${output}/workspace0/last-image" -n -t string -s "$wallpaper" 2>/dev/null || true
+	xfconf-query -c xfce4-desktop -p "/backdrop/screen0/monitor${output}/workspace0/image-style" -n -t int -s 5 2>/dev/null || true
+	xfconf-query -c xfce4-desktop -p "/backdrop/screen0/monitor${output}/workspace0/color-style" -n -t int -s 0 2>/dev/null || true
+done

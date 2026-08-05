@@ -1,0 +1,10 @@
+#!/bin/sh
+# Debian's desktop-base package controls the active wallpaper via
+# update-alternatives (desktop-background), not directly via xfconf -
+# register ours with higher priority than desktop-base's own themes so
+# it wins regardless of which monitor/output name xfconf expects.
+set -e
+
+update-alternatives --install /usr/share/images/desktop-base/desktop-background \
+	desktop-background /usr/share/backgrounds/swat/wallpaper.png 100
+update-alternatives --set desktop-background /usr/share/backgrounds/swat/wallpaper.png
