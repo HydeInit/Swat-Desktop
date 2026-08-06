@@ -49,6 +49,10 @@ sudo apt-get install live-build debootstrap squashfs-tools xorriso isolinux qemu
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for how to propose a change.
 
+## Firmware
+
+SWAT includes non-free firmware (WiFi, GPU, etc.) on the ISO to maximize out-of-the-box hardware support, matching Debian's own installer default since Debian 12. This is scoped specifically to the `non-free-firmware` archive component (device firmware blobs) — not the broader `non-free` component (proprietary applications), which SWAT does not enable.
+
 ## License
 
 The build configuration, scripts, and documentation in this repository are licensed under [Apache 2.0](LICENSE).

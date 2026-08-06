@@ -4,7 +4,7 @@ set -e
 lb config noauto \
 	--distribution trixie \
 	--architectures amd64 \
-	--archive-areas 'main' \
+	--archive-areas 'main non-free-firmware' \
 	--binary-images iso-hybrid \
 	--debian-installer live \
 	--updates true \

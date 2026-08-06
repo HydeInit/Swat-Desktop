@@ -1,0 +1,12 @@
+# Non-free firmware for broad hardware support (WiFi, GPU, etc.), matching
+# Debian's own installer default since Debian 12. Deliberately scoped to
+# firmware only (the non-free-firmware archive component), not the wider
+# non-free component (proprietary applications/drivers) - see docs/README.md
+# and the README's Firmware section for the reasoning.
+firmware-misc-nonfree
+firmware-realtek
+firmware-iwlwifi
+firmware-atheros
+firmware-brcm80211
+firmware-amd-graphics
+firmware-sof-signed
