@@ -10,8 +10,11 @@ plymouth
 pkexec
 # grub-common was already present (pulled in indirectly) but not the
 # actual grub-install binary - Calamares' bootloader step needs it.
-# grub-pc and grub-efi-amd64 CONFLICT (Debian packaging, can't install
-# both) - BIOS only for now. Supporting EFI-mode target installs is
-# issue #7's actual scope (may need a hook that picks the right variant
-# based on how the system booted, not just installing both).
-grub-pc
+# The metapackages grub-pc/grub-efi-amd64 conflict (they each own
+# "auto-configure this system's bootloader" postinst logic) but the
+# underlying -bin packages don't - Calamares calls grub-install
+# --target=X directly, bypassing that postinst entirely, so installing
+# both -bin packages supports BIOS and EFI target installs from the
+# same image without needing the conflicting metapackages at all.
+grub-pc-bin
+grub-efi-amd64-bin
