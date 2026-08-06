@@ -1,0 +1,28 @@
+---
+componentName: swat
+
+strings:
+    productName:         SWAT
+    shortProductName:    SWAT
+    version:             0.1
+    shortVersion:        0.1
+    versionedName:       SWAT 0.1
+    shortVersionedName:  SWAT 0.1
+    bootloaderEntryName: SWAT
+    productUrl:          https://github.com/HydeInit/Swat-Desktop
+    supportUrl:          https://github.com/HydeInit/Swat-Desktop/issues
+    knownIssuesUrl:      https://github.com/HydeInit/Swat-Desktop/issues
+    releaseNotesUrl:     https://github.com/HydeInit/Swat-Desktop/blob/master/CHANGELOG.md
+
+images:
+    productLogo:         "logo.png"
+    productIcon:         "logo.png"
+    productWelcome:      "welcome.png"
+
+slideshow: "show.qml"
+
+style:
+   sidebarBackground:    "#0a0e14"
+   sidebarText:          "#c5d1de"
+   sidebarTextSelect:    "#0a0e14"
+   sidebarTextHighlight: "#00d4ff"

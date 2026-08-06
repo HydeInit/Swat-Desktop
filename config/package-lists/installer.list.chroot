@@ -1,0 +1,8 @@
+# Calamares - graphical installer, branded via
+# config/includes.chroot_after_packages/etc/calamares/.
+#
+# debian-installer (via --debian-installer live in auto/config) is
+# left in place alongside this for now, not removed - Calamares needs
+# to be proven reliable first (see issues #5/#6) before dropping the
+# fallback.
+calamares
