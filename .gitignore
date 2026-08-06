@@ -23,3 +23,13 @@ binary/
 chroot/
 cache/
 *.log
+
+# .deb build output (built from packaging/*/debian/, not tracked as source)
+packaging/*.deb
+packaging/*.buildinfo
+packaging/*.changes
+packaging/*/debian/.debhelper/
+packaging/*/debian/*.substvars
+packaging/*/debian/*.debhelper.log
+packaging/*/debian/debhelper-build-stamp
+packaging/*/debian/swat-*/

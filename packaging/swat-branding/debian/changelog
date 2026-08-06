@@ -1,0 +1,6 @@
+swat-branding (1.0.0) unstable; urgency=low
+
+  * Initial release: default wallpaper only, validates the apt
+    packaging pipeline (build, sign, publish, install).
+
+ -- SWAT Desktop <16109762+ColinMoulds@users.noreply.github.com>  Thu, 06 Aug 2026 12:00:00 +0000

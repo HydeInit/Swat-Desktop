@@ -1,0 +1,18 @@
+Source: swat-branding
+Section: x11
+Priority: optional
+Maintainer: SWAT Desktop <16109762+ColinMoulds@users.noreply.github.com>
+Build-Depends: debhelper-compat (= 13)
+Standards-Version: 4.6.2
+Homepage: https://github.com/HydeInit/Swat-Desktop
+
+Package: swat-branding
+Architecture: all
+Depends: ${misc:Depends}
+Description: SWAT desktop wallpaper and branding assets
+ Installs the default SWAT desktop wallpaper into the shared
+ backgrounds directory, independent of a full ISO respin.
+ .
+ This package exists to validate the apt packaging pipeline
+ (build, sign, publish, install) with a low-risk asset package
+ before anything with real behavior is packaged the same way.
