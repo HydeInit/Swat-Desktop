@@ -17,6 +17,22 @@ Rectangle {
     width: 190
     height: parent.height
 
+    // Icon per step, indexed to match the fixed module order in
+    // settings.conf's "show:" sequence (welcome, locale, keyboard,
+    // partition, users, summary, then the exec/install progress step,
+    // then finished). Positional, not name-based - ViewManager's model
+    // doesn't expose a module-name role, only index and display text.
+    property var stepIcons: [
+        "icons/welcome.svg",
+        "icons/locale.svg",
+        "icons/keyboard.svg",
+        "icons/partition.svg",
+        "icons/users.svg",
+        "icons/summary.svg",
+        "icons/install.svg",
+        "icons/finished.svg"
+    ]
+
     ColumnLayout {
         anchors.fill: parent
         anchors.margins: 0
@@ -40,9 +56,20 @@ Rectangle {
                 height: 44
                 color: Branding.styleString( index == ViewManager.currentStepIndex ? Branding.SidebarBackgroundCurrent : Branding.SidebarBackground )
 
+                Image {
+                    id: stepIcon
+                    anchors.verticalCenter: parent.verticalCenter
+                    x: 16
+                    width: 20
+                    height: 20
+                    sourceSize.width: width
+                    sourceSize.height: height
+                    source: index < sideBar.stepIcons.length ? sideBar.stepIcons[index] : ""
+                }
+
                 Text {
                     anchors.verticalCenter: parent.verticalCenter
-                    x: 20
+                    x: 48
                     color: Branding.styleString( index == ViewManager.currentStepIndex ? Branding.SidebarTextCurrent : Branding.SidebarText )
                     text: display
                     font.pointSize: index == ViewManager.currentStepIndex ? 11 : 10

@@ -10,3 +10,10 @@ xfce4-power-manager
 pavucontrol
 epiphany-browser
 fonts-dejavu
+
+# SWAT desktop theme - Blackbird is XFCE-native (Shimmer Project, same
+# team as XFCE's own default Greybird theme), Papirus-Dark is the
+# widely-used modern icon set. Both dark, matching the cyan-on-dark
+# branding used everywhere else. Set as default via skel xfconf files.
+blackbird-gtk-theme
+papirus-icon-theme
