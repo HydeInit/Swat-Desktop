@@ -33,3 +33,10 @@ packaging/*/debian/*.substvars
 packaging/*/debian/*.debhelper.log
 packaging/*/debian/debhelper-build-stamp
 packaging/*/debian/swat-*/
+
+# Python build/dev artifacts (swat-cli)
+swat-cli/.venv/
+swat-cli/**/__pycache__/
+swat-cli/**/*.egg-info/
+swat-cli/build/
+swat-cli/dist/
