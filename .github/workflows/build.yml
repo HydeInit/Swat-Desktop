@@ -7,6 +7,17 @@ on:
     branches: [ master ]
   workflow_dispatch:
 
+# Cancel a superseded run when new commits land on the same branch/PR -
+# these builds take 6-10+ minutes, no point running two for the same ref.
+concurrency:
+  group: build-${{ github.ref }}
+  cancel-in-progress: true
+
+# Default to read-only; nothing in this workflow needs to write anything
+# (no PR comments, no pushed tags/commits).
+permissions:
+  contents: read
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -16,6 +27,12 @@ jobs:
     container:
       image: debian:trixie
       options: --privileged
+    # Gate the privileged build behind a required-reviewer environment, but
+    # only for pull_request events - a fork PR can't run this without
+    # explicit maintainer approval in the Actions tab. Direct pushes to
+    # master (only possible with repo write access already) skip the gate
+    # entirely: environment: "" applies no protection rules.
+    environment: ${{ github.event_name == 'pull_request' && 'iso-build' || '' }}
     steps:
       # Monitors network egress during the job and flags anomalies - defense
       # in depth in case a malicious PR (from a fork) ever slips something
@@ -23,11 +40,11 @@ jobs:
       # access during the build. Audit mode: reports, doesn't block, since
       # this build legitimately needs broad network access (package mirrors).
       - name: Harden Runner
-        uses: step-security/harden-runner@v2
+        uses: step-security/harden-runner@b09bb98e06d4d774595224525879c09bc6e98c40 # v2
         with:
           egress-policy: audit
 
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
 
       - name: Install live-build toolchain
         run: |
@@ -45,7 +62,7 @@ jobs:
       # per-run key with a shared restore prefix sidesteps hashing entirely -
       # each run always saves a fresh cache, and restores the most recent one.
       - name: Restore live-build cache
-        uses: actions/cache@v6
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
         with:
           path: cache
           key: lb-cache-${{ github.run_id }}
@@ -61,7 +78,7 @@ jobs:
           sha256sum -- *.iso | tee SHA256SUMS
 
       - name: Upload ISO artifact
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
         with:
           name: swat-iso
           path: |
