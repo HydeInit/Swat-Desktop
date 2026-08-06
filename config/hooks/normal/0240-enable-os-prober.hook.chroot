@@ -1,0 +1,14 @@
+#!/bin/sh
+# Debian's grub-common ships os-prober (pulled in as a Recommends) but
+# /etc/grub.d/30_os-prober refuses to run unless GRUB_DISABLE_OS_PROBER is
+# explicitly set to "false" - unset (the shipped default has it commented
+# out) is treated the same as disabled. Without this, update-grub silently
+# skips detecting other operating systems (e.g. Windows on a dual-boot
+# install), even though os-prober itself is installed and would find them.
+set -e
+
+if grep -q '^GRUB_DISABLE_OS_PROBER=' /etc/default/grub; then
+	sed -i 's/^GRUB_DISABLE_OS_PROBER=.*/GRUB_DISABLE_OS_PROBER=false/' /etc/default/grub
+else
+	echo 'GRUB_DISABLE_OS_PROBER=false' >> /etc/default/grub
+fi
