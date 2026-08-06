@@ -4,7 +4,7 @@ set -e
 
 cd "$(dirname "$0")/.."
 
-swat_version="0.1.0-dev"
+swat_version="0.1.0"
 debian_base="13"
 build_arch="amd64"
 build_commit=$(git rev-parse HEAD 2>/dev/null || echo unknown)

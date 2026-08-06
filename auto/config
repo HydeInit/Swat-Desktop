@@ -9,4 +9,6 @@ lb config noauto \
 	--debian-installer live \
 	--updates true \
 	--security true \
+	--chroot-squashfs-compression-type zstd \
+	--chroot-squashfs-compression-level 19 \
 	"${@}"

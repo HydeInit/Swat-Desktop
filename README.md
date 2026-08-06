@@ -4,12 +4,18 @@
 
 <p align="center">
 <a href="https://github.com/HydeInit/Swat-Desktop/actions/workflows/build.yml"><img src="https://github.com/HydeInit/Swat-Desktop/actions/workflows/build.yml/badge.svg" alt="Build status"></a>
+<a href="https://github.com/HydeInit/Swat-Desktop/releases/latest"><img src="https://img.shields.io/github/v/release/HydeInit/Swat-Desktop" alt="Latest release"></a>
 <a href="http://www.apache.org/licenses/LICENSE-2.0"><img src="https://img.shields.io/badge/license-Apache%20v2.0-blue.svg" alt="Apache v2.0"></a>
-<img src="https://img.shields.io/badge/status-early%20prototype-yellow.svg" alt="Early Prototype">
 <img src="https://img.shields.io/badge/base-Debian%2013%20(trixie)-A81D33?logo=debian&logoColor=white" alt="Debian 13 trixie">
 </p>
 
-**Note:** *SWAT is under active development and does not yet have a release build.*
+**Note:** *SWAT is under active development. v0.1 is an early release — expect rough edges. See the [changelog](CHANGELOG.md) and [open issues](https://github.com/HydeInit/Swat-Desktop/issues).*
+
+## Download
+
+Pre-built ISOs are on the [Releases page](https://github.com/HydeInit/Swat-Desktop/releases/latest) (the ISO itself is hosted on Internet Archive due to its size, linked from the release notes). Verify the download against the `SHA256SUMS` attached to the release before booting it.
+
+Prefer to build it yourself? See [Quick start](#quick-start) below.
 
 ## Motivation
 
