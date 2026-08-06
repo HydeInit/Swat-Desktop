@@ -8,3 +8,9 @@ plymouth
 # already pulled in indirectly) and pkexec (the actual CLI binary the
 # SWAT installer launcher needs, which was missing without this).
 pkexec
+# grub-common was already present (pulled in indirectly) but not the
+# actual grub-install binary - Calamares' bootloader step needs it.
+# Installing both BIOS and EFI variants; harmless to have both, and
+# EFI will matter once issue #7 (UEFI boot) is tested.
+grub-pc
+grub-efi-amd64
