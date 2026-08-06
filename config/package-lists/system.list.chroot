@@ -4,7 +4,7 @@ sudo
 console-setup
 keyboard-configuration
 plymouth
-# Provides pkexec - the polkit authentication agent (already pulled in
-# indirectly) needs this to actually exist for graphical privilege
-# elevation (e.g. the SWAT installer launcher) to work.
-policykit-1
+# policykit-1 no longer exists in trixie - split into polkitd (daemon,
+# already pulled in indirectly) and pkexec (the actual CLI binary the
+# SWAT installer launcher needs, which was missing without this).
+pkexec
