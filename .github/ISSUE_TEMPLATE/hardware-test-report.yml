@@ -8,6 +8,18 @@ body:
       label: Device model
     validations:
       required: true
+  - type: input
+    id: cpu
+    attributes:
+      label: CPU
+    validations:
+      required: false
+  - type: input
+    id: gpu
+    attributes:
+      label: GPU
+    validations:
+      required: false
   - type: dropdown
     id: boot-mode
     attributes:
