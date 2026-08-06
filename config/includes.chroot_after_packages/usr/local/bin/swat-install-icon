@@ -1,0 +1,13 @@
+#!/bin/sh
+# The "Install SWAT" desktop launcher only makes sense in the live
+# session - kept out of /etc/skel entirely (rather than removed via a
+# post-install package operation) so an installed system never gets it
+# in the first place, no cleanup step needed.
+set -e
+
+[ -d /run/live/medium ] || exit 0
+
+mkdir -p "$HOME/Desktop"
+cp -f /usr/share/applications/swat-installer.desktop "$HOME/Desktop/swat-installer.desktop"
+chmod +x "$HOME/Desktop/swat-installer.desktop"
+gio set "$HOME/Desktop/swat-installer.desktop" metadata::trusted true 2>/dev/null || true

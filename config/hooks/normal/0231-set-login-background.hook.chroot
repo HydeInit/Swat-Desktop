@@ -1,0 +1,14 @@
+#!/bin/sh
+# lightdm-gtk-greeter's default background comes from desktop-base's own
+# login theme (Debian swirl + version text baked into the SVG itself) via
+# the desktop-login-background alternative - confirmed via
+# `update-alternatives --display desktop-login-background` (link is
+# /usr/share/images/desktop-base/login-background.svg). lightdm-gtk-greeter
+# itself has no separate logo/overlay option - the branding is the
+# background image. Same override pattern as the desktop wallpaper hook,
+# reusing the same asset for visual consistency between login and desktop.
+set -e
+
+update-alternatives --install /usr/share/images/desktop-base/login-background.svg \
+	desktop-login-background /usr/share/backgrounds/swat/wallpaper.png 100
+update-alternatives --set desktop-login-background /usr/share/backgrounds/swat/wallpaper.png

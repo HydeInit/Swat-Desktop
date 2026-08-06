@@ -19,10 +19,22 @@ images:
     productIcon:         "logo.png"
     productWelcome:      "welcome.png"
 
+# QML sidebar/navigation (calamares-sidebar.qml / calamares-navigation.qml,
+# both in this directory) replace the basic widget fallback - gives us
+# actual control over layout/colors instead of "Branding setting for
+# sidebar is missing, using 'widget'" defaults.
+sidebar: qml
+navigation: qml
+
 slideshow: "show.qml"
 
+# Key names/casing here are Calamares' own schema (SidebarBackground,
+# SidebarText, SidebarTextCurrent, SidebarBackgroundCurrent) - the
+# previous lowercase-first names here (sidebarBackground, sidebarText,
+# sidebarTextSelect, sidebarTextHighlight) didn't match anything
+# Calamares recognizes, so none of this was ever actually applying.
 style:
-   sidebarBackground:    "#0a0e14"
-   sidebarText:          "#c5d1de"
-   sidebarTextSelect:    "#0a0e14"
-   sidebarTextHighlight: "#00d4ff"
+   SidebarBackground:        "#0a0e14"
+   SidebarText:              "#c5d1de"
+   SidebarTextCurrent:       "#0a0e14"
+   SidebarBackgroundCurrent: "#00d4ff"

@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=SWAT Install Icon
+Comment=Places the Install SWAT launcher on the desktop, live session only
+Exec=/usr/local/bin/swat-install-icon
+NoDisplay=true
+X-GNOME-Autostart-enabled=true
