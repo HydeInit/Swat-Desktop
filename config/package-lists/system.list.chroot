@@ -4,3 +4,7 @@ sudo
 console-setup
 keyboard-configuration
 plymouth
+# Provides pkexec - the polkit authentication agent (already pulled in
+# indirectly) needs this to actually exist for graphical privilege
+# elevation (e.g. the SWAT installer launcher) to work.
+policykit-1
