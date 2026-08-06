@@ -10,7 +10,8 @@ plymouth
 pkexec
 # grub-common was already present (pulled in indirectly) but not the
 # actual grub-install binary - Calamares' bootloader step needs it.
-# Installing both BIOS and EFI variants; harmless to have both, and
-# EFI will matter once issue #7 (UEFI boot) is tested.
+# grub-pc and grub-efi-amd64 CONFLICT (Debian packaging, can't install
+# both) - BIOS only for now. Supporting EFI-mode target installs is
+# issue #7's actual scope (may need a hook that picks the right variant
+# based on how the system booted, not just installing both).
 grub-pc
-grub-efi-amd64
