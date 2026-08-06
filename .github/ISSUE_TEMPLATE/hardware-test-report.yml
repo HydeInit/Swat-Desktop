@@ -1,0 +1,28 @@
+name: Hardware test report
+description: Report a boot/install test on real hardware
+labels: ["hardware-test"]
+body:
+  - type: input
+    id: device
+    attributes:
+      label: Device model
+    validations:
+      required: true
+  - type: dropdown
+    id: boot-mode
+    attributes:
+      label: Boot mode
+      options: ["UEFI", "Legacy BIOS"]
+    validations:
+      required: true
+  - type: dropdown
+    id: result
+    attributes:
+      label: Result
+      options: ["Boots + installs clean", "Boots, install fails", "Doesn't boot"]
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes / errors

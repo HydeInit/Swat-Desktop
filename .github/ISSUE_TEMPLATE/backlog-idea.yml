@@ -1,0 +1,10 @@
+name: Backlog idea
+description: Future feature/idea, not for immediate work
+labels: ["post-foundation"]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: What's the idea?
+    validations:
+      required: true

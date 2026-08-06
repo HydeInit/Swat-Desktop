@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Hardware test report
+    url: https://github.com/HydeInit/Swat-Desktop/issues/new?template=hardware-test-report.yml
+    about: Report a boot/install test on real hardware
+  - name: Backlog idea
+    url: https://github.com/HydeInit/Swat-Desktop/issues/new?template=backlog-idea.yml
+    about: Suggest something for the post-foundation backlog
