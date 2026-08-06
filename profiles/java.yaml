@@ -1,0 +1,29 @@
+id: java
+name: Java
+description: Java development environment with Gradle and Maven, managed via SDKMAN inside an isolated container - the host stays clean.
+version: 1
+
+host_packages:
+  - git
+  - podman
+  - distrobox
+
+environment:
+  base_image: debian:stable
+  packages:
+    - git
+    - unzip
+    - zip
+    - curl
+  setup:
+    - install-sdkman
+    - install-java-21
+    - install-gradle-tools
+    - install-maven
+
+recommended_apps:
+  - intellij-idea-community
+
+checks:
+  - java --version
+  - gradle --version

@@ -1,0 +1,60 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/HydeInit/Swat-Desktop/profiles/schema.json",
+  "title": "SWAT development profile",
+  "type": "object",
+  "required": ["id", "name", "description", "version"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "description": "Unique, filename-matching identifier (e.g. 'core', 'minecraft-neoforge')."
+    },
+    "name": {
+      "type": "string",
+      "description": "Human-readable profile name shown in the UI."
+    },
+    "description": {
+      "type": "string",
+      "description": "One or two sentence summary shown alongside the name."
+    },
+    "version": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Schema/profile revision, bumped on breaking changes to this profile's definition."
+    },
+    "host_packages": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Packages installed on the host system itself (e.g. git, podman)."
+    },
+    "environment": {
+      "type": "object",
+      "description": "Container-based dev environment definition (Podman/Distrobox), not applied to the host.",
+      "additionalProperties": false,
+      "properties": {
+        "base_image": { "type": "string" },
+        "packages": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "setup": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Named setup steps run inside the container (e.g. 'install-java-25')."
+        }
+      }
+    },
+    "recommended_apps": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Optional applications suggested, not auto-installed."
+    },
+    "checks": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Commands used to verify the profile applied correctly (e.g. 'git --version')."
+    }
+  }
+}

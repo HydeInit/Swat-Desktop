@@ -1,0 +1,27 @@
+id: python
+name: Python
+description: Python development with modern tooling (uv, pipx) in an isolated container, plus an optional Jupyter setup.
+version: 1
+
+host_packages:
+  - git
+  - podman
+  - distrobox
+
+environment:
+  base_image: debian:stable
+  packages:
+    - git
+    - python3
+    - python3-venv
+  setup:
+    - install-pipx
+    - install-uv
+
+recommended_apps:
+  - visual-studio-code
+  - jupyter
+
+checks:
+  - python3 --version
+  - uv --version

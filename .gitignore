@@ -34,9 +34,15 @@ packaging/*/debian/*.debhelper.log
 packaging/*/debian/debhelper-build-stamp
 packaging/*/debian/swat-*/
 
-# Python build/dev artifacts (swat-cli)
+# Python build/dev artifacts (swat-cli, swat-welcome)
 swat-cli/.venv/
 swat-cli/**/__pycache__/
 swat-cli/**/*.egg-info/
 swat-cli/build/
 swat-cli/dist/
+swat-welcome/.venv/
+swat-welcome/**/__pycache__/
+swat-welcome/**/*.egg-info/
+swat-welcome/build/
+swat-welcome/dist/
+.pytest_cache/

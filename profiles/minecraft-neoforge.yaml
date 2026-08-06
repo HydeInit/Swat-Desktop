@@ -1,0 +1,28 @@
+id: minecraft-neoforge
+name: Minecraft Modding - NeoForge
+description: Java and Gradle environment for modern NeoForge development, isolated from the host in a container.
+version: 1
+
+host_packages:
+  - git
+  - podman
+  - distrobox
+
+environment:
+  base_image: debian:stable
+  packages:
+    - git
+    - unzip
+    - zip
+  setup:
+    - install-java-25
+    - install-gradle-tools
+
+recommended_apps:
+  - visual-studio-code
+  - intellij-idea-community
+  - blockbench
+
+checks:
+  - java --version
+  - git --version

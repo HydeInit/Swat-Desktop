@@ -1,0 +1,23 @@
+id: core
+name: Core Developer
+description: Baseline tools for any development work - version control, a decent shell environment, and container tooling for everything else.
+version: 1
+
+host_packages:
+  - git
+  - openssh-client
+  - build-essential
+  - tmux
+  - ripgrep
+  - fd-find
+  - fzf
+  - jq
+  - podman
+  - distrobox
+
+recommended_apps:
+  - visual-studio-code
+
+checks:
+  - git --version
+  - podman --version
