@@ -3,7 +3,7 @@
 # Usage: scripts/verify-iso.sh [path/to/image.iso]
 set -e
 
-# shellcheck source=scripts/lib.sh
+# shellcheck source=/dev/null
 . "$(dirname "$0")/lib.sh"
 cd "$(dirname "$0")/.."
 
