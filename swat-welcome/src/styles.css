@@ -1,0 +1,268 @@
+:root {
+  --bg: #0a0e14;
+  --panel: #10151d;
+  --text: #c5d1de;
+  --muted: #5a6b7a;
+  --accent: #00d4ff;
+  --border: #1c2430;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.app-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--border);
+}
+
+.app-header .logo {
+  width: 28px;
+  height: 28px;
+}
+
+.app-title {
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--accent);
+}
+
+.screens {
+  flex: 1;
+  position: relative;
+  overflow-y: auto;
+}
+
+.screen {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 32px 48px;
+}
+
+.screen[hidden] {
+  display: none;
+}
+
+.screen-center {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  max-width: 640px;
+}
+
+h1 {
+  font-size: 1.6rem;
+  margin: 0 0 8px;
+  color: #fff;
+}
+
+.lede {
+  color: var(--muted);
+  margin: 0 0 24px;
+  max-width: 560px;
+  line-height: 1.5;
+}
+
+.field-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 480px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field-label {
+  font-size: 0.9rem;
+  color: var(--text);
+}
+
+.field select {
+  background: var(--panel);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 8px 10px;
+  font-size: 0.9rem;
+}
+
+.field-checkbox {
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.tabs {
+  display: flex;
+  gap: 4px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 16px;
+}
+
+.tab {
+  background: transparent;
+  border: none;
+  color: var(--muted);
+  padding: 10px 16px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+}
+
+.tab:hover {
+  color: var(--text);
+}
+
+.tab.active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+.tab-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 560px;
+}
+
+.tab-panel[hidden] {
+  display: none;
+}
+
+.catalog-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  cursor: pointer;
+}
+
+.catalog-item input {
+  margin-top: 3px;
+}
+
+.catalog-name {
+  display: block;
+  color: #fff;
+  font-size: 0.92rem;
+}
+
+.catalog-desc {
+  display: block;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.progress-track {
+  height: 8px;
+  border-radius: 4px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  max-width: 480px;
+  margin-bottom: 16px;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 60%;
+  background: var(--accent);
+}
+
+.log {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px 16px;
+  max-width: 560px;
+  font-family: ui-monospace, monospace;
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+.log-line {
+  padding: 2px 0;
+}
+
+.screen-nav {
+  display: flex;
+  align-items: center;
+  padding-top: 16px;
+}
+
+.spacer {
+  flex: 1;
+}
+
+.btn {
+  padding: 10px 22px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #0a0e14;
+  font-weight: 600;
+}
+
+.btn-primary:hover {
+  opacity: 0.9;
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text);
+  border-color: var(--border);
+}
+
+.btn-ghost:hover {
+  border-color: var(--muted);
+}
+
+.step-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding: 16px;
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--border);
+}
+
+.dot.active {
+  background: var(--accent);
+}

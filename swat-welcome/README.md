@@ -1,22 +1,31 @@
-# swat-welcome
+# SWAT Welcome
 
-Prototype of SWAT's first-run profile selection experience. Reads
-development profiles (`profiles/` at the repo root), lets you pick some,
-and shows a dry-run plan of what would be set up.
+First-boot welcome experience, built with Tauri. Static UI scaffold only
+right now - five screens (Welcome, Customisations, Recommended installs,
+Installing, Finish), navigable, on-brand, no install logic wired up.
+Nothing here actually installs anything yet.
 
-**Installs nothing.** No subprocess calls, no system changes, no
-privilege escalation - this is a UI/UX preview of the profile-selection
-flow, not a working installer. See `docs/IDEAS.md`'s "SWAT Welcome
-Application" section for the full planned scope (browser choice, git
-config, SSH key setup, etc.) - only the welcome + profile-selection +
-dry-run-plan pages exist so far.
+See issue #19 for what's still needed: real catalog data, the install
+engine, polkit wiring, the first-boot trigger, packaging, and ISO
+integration.
 
-## Install (development)
-
-Requires `swat-cli` installed in the same environment (profile loading
-is shared, not duplicated):
+## Requirements (Debian trixie, all via apt, no extra repos)
 
 ```
-pip install -e ../swat-cli -e .
-swat-welcome
+sudo apt install libwebkit2gtk-4.1-dev build-essential curl wget file \
+  libxdo-dev libssl-dev libayatana-appindicator3-dev librsvg2-dev \
+  pkg-config cargo rustc nodejs npm
+```
+
+## Develop
+
+```
+npm install
+npm run tauri dev
+```
+
+## Build
+
+```
+npm run tauri build
 ```

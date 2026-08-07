@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>SWAT Welcome</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="app-header">
+      <img class="logo" src="assets/logo.png" alt="SWAT" />
+      <span class="app-title">SWAT Welcome</span>
+    </header>
+
+    <main class="screens">
+      <!-- 1. Welcome -->
+      <section class="screen" id="screen-welcome" data-screen>
+        <div class="screen-center">
+          <h1>Spin up a workstation, not a project.</h1>
+          <p class="lede">
+            A couple of quick steps to make this machine yours - pick a few
+            customisations and the tools you want, or skip straight to the
+            desktop.
+          </p>
+        </div>
+        <footer class="screen-nav">
+          <button class="btn btn-ghost" data-action="skip">Skip</button>
+          <span class="spacer"></span>
+          <button class="btn btn-primary" data-action="next">Next</button>
+        </footer>
+      </section>
+
+      <!-- 2. Customisations -->
+      <section class="screen" id="screen-customisations" data-screen hidden>
+        <h1>Customisations</h1>
+        <p class="lede">Set a few defaults now - all of this stays changeable later.</p>
+
+        <div class="field-list">
+          <label class="field">
+            <span class="field-label">Theme variant</span>
+            <select>
+              <option>Blackbird (dark, default)</option>
+              <option>Blackbird (high contrast)</option>
+            </select>
+          </label>
+          <label class="field">
+            <span class="field-label">Default terminal</span>
+            <select>
+              <option>xfce4-terminal (default)</option>
+            </select>
+          </label>
+          <label class="field field-checkbox">
+            <input type="checkbox" checked />
+            <span class="field-label">Enable extra keyboard shortcuts</span>
+          </label>
+        </div>
+
+        <footer class="screen-nav">
+          <button class="btn btn-ghost" data-action="back">Back</button>
+          <span class="spacer"></span>
+          <button class="btn btn-primary" data-action="next">Next</button>
+        </footer>
+      </section>
+
+      <!-- 3. Recommended installs -->
+      <section class="screen" id="screen-installs" data-screen hidden>
+        <h1>Recommended installs</h1>
+        <p class="lede">Pick anything you want set up now - nothing here is required.</p>
+
+        <div class="tabs" role="tablist">
+          <button class="tab active" role="tab" data-tab="browsers">Browsers</button>
+          <button class="tab" role="tab" data-tab="coding">Coding tools</button>
+          <button class="tab" role="tab" data-tab="ai">AI CLIs</button>
+        </div>
+
+        <div class="tab-panel" data-tab-panel="browsers">
+          <label class="catalog-item">
+            <input type="checkbox" />
+            <span>
+              <span class="catalog-name">Firefox</span>
+              <span class="catalog-desc">Mozilla's browser, ESR channel</span>
+            </span>
+          </label>
+          <label class="catalog-item">
+            <input type="checkbox" />
+            <span>
+              <span class="catalog-name">Chromium</span>
+              <span class="catalog-desc">Open-source base of Chrome</span>
+            </span>
+          </label>
+        </div>
+
+        <div class="tab-panel" data-tab-panel="coding" hidden>
+          <label class="catalog-item">
+            <input type="checkbox" />
+            <span>
+              <span class="catalog-name">Visual Studio Code</span>
+              <span class="catalog-desc">Microsoft's code editor</span>
+            </span>
+          </label>
+          <label class="catalog-item">
+            <input type="checkbox" />
+            <span>
+              <span class="catalog-name">GitHub CLI</span>
+              <span class="catalog-desc">gh - GitHub from the terminal</span>
+            </span>
+          </label>
+          <label class="catalog-item">
+            <input type="checkbox" />
+            <span>
+              <span class="catalog-name">Podman Desktop</span>
+              <span class="catalog-desc">GUI for container management</span>
+            </span>
+          </label>
+        </div>
+
+        <div class="tab-panel" data-tab-panel="ai" hidden>
+          <label class="catalog-item">
+            <input type="checkbox" />
+            <span>
+              <span class="catalog-name">Aider</span>
+              <span class="catalog-desc">AI pair programming in your terminal</span>
+            </span>
+          </label>
+          <label class="catalog-item">
+            <input type="checkbox" />
+            <span>
+              <span class="catalog-name">GitHub Copilot CLI</span>
+              <span class="catalog-desc">Copilot from the terminal</span>
+            </span>
+          </label>
+        </div>
+
+        <footer class="screen-nav">
+          <button class="btn btn-ghost" data-action="back">Back</button>
+          <span class="spacer"></span>
+          <button class="btn btn-primary" data-action="next">Next</button>
+        </footer>
+      </section>
+
+      <!-- 4. Installing -->
+      <section class="screen" id="screen-installing" data-screen hidden>
+        <h1>Installing</h1>
+        <p class="lede">This is a preview - nothing is actually being installed yet.</p>
+
+        <div class="progress-track">
+          <div class="progress-fill"></div>
+        </div>
+
+        <div class="log">
+          <div class="log-line">Installing Visual Studio Code...</div>
+          <div class="log-line">Installing GitHub CLI...</div>
+          <div class="log-line">Installing Aider...</div>
+        </div>
+
+        <footer class="screen-nav">
+          <span class="spacer"></span>
+          <button class="btn btn-primary" data-action="next">Continue</button>
+        </footer>
+      </section>
+
+      <!-- 5. Finish -->
+      <section class="screen" id="screen-finish" data-screen hidden>
+        <div class="screen-center">
+          <h1>You're all set.</h1>
+          <p class="lede">
+            3 apps queued for install. You can reopen SWAT Welcome any time
+            from the applications menu to change your mind.
+          </p>
+        </div>
+        <footer class="screen-nav">
+          <span class="spacer"></span>
+          <button class="btn btn-primary" data-action="close">Close</button>
+        </footer>
+      </section>
+    </main>
+
+    <nav class="step-dots" aria-hidden="true">
+      <span class="dot active"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </nav>
+  </div>
+
+  <script type="module" src="main.js"></script>
+</body>
+</html>
