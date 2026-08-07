@@ -1,3 +1,4 @@
+# shellcheck shell=sh
 # Shared helpers, sourced by other scripts/ - not meant to be run directly.
 
 # Most recently built ISO in output/, or empty if none exists.
