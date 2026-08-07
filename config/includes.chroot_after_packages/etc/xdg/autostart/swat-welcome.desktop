@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=SWAT Welcome
+Comment=First-boot welcome and setup
+Exec=/usr/local/bin/swat-welcome-first-boot
+NoDisplay=true
+X-GNOME-Autostart-enabled=true

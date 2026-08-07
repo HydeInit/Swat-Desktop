@@ -1,0 +1,15 @@
+#!/bin/sh
+# Runs SWAT Welcome once per user on an installed system - inverse of
+# swat-install-icon's guard (that one is live-session-only, this one is
+# installed-only), same flag-file idea as the icon script's own
+# early-exit pattern.
+set -e
+
+[ -d /run/live/medium ] && exit 0
+
+FLAG="$HOME/.config/swat/welcome-done"
+[ -f "$FLAG" ] && exit 0
+
+mkdir -p "$(dirname "$FLAG")"
+/usr/bin/swat-welcome
+touch "$FLAG"
