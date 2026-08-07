@@ -9,6 +9,10 @@ set -e
 cd "$(dirname "$0")/.."
 
 copy() {
+	# git doesn't track empty directories, and some of these destination
+	# dirs now hold nothing else - on a fresh checkout they won't exist
+	# at all.
+	mkdir -p "$(dirname "$2")"
 	echo "  $1 -> $2"
 	cp "$1" "$2"
 }
