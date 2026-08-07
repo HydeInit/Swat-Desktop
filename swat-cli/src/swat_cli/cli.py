@@ -58,6 +58,8 @@ def run_profile_show(args: argparse.Namespace) -> int:
             print(f"\nContainer environment: {p.environment}")
         if p.recommended_apps:
             print(f"\nRecommended apps: {', '.join(p.recommended_apps)}")
+        if p.checks:
+            print(f"\nVerification commands: {', '.join(p.checks)}")
     return 0
 
 

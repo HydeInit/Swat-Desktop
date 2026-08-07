@@ -16,6 +16,14 @@ config/package-lists/live.list.chroot
 config/includes.chroot_after_packages/etc/swat-release
 config/includes.chroot_after_packages/usr/share/swat/
 
+# Branding assets copied from branding/ (the source of truth) by
+# scripts/sync-branding.sh, not hand-edited in place
+config/includes.chroot_after_packages/usr/share/backgrounds/swat/wallpaper.png
+config/includes.chroot_after_packages/etc/calamares/branding/swat/logo.png
+config/includes.chroot_after_packages/usr/share/plymouth/themes/swat/swat.script
+config/includes.chroot_after_packages/usr/share/plymouth/themes/swat/swat.plymouth
+packaging/swat-branding/usr/share/backgrounds/swat/wallpaper.png
+
 # live-build build/runtime artifacts
 config/cache
 .build/

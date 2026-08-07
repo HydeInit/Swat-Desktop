@@ -8,6 +8,7 @@ import dataclasses
 import os
 import shutil
 import subprocess
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 # Device classes where a missing driver usually means missing firmware,
@@ -129,14 +130,30 @@ def check_xfce_config() -> list[CheckResult]:
     return [CheckResult("xfce-config", "ok", "xfce config directory present and xfconf reachable")]
 
 
+def _find_broken_symlinks(root: Path) -> list[str]:
+    # os.scandir's DirEntry caches is_symlink() from the directory read
+    # itself, avoiding a separate lstat per entry; exists() (which follows
+    # the link) is only called for entries actually flagged as symlinks,
+    # not every file in the tree.
+    broken = []
+    try:
+        entries = list(os.scandir(root))
+    except OSError:
+        return broken
+    for entry in entries:
+        if entry.is_symlink():
+            if not os.path.exists(entry.path):
+                broken.append(entry.path)
+        elif entry.is_dir(follow_symlinks=False):
+            broken.extend(_find_broken_symlinks(Path(entry.path)))
+    return broken
+
+
 def check_broken_symlinks() -> list[CheckResult]:
     broken = []
     for root in SYMLINK_SCAN_ROOTS:
-        if not root.is_dir():
-            continue
-        for path in root.rglob("*"):
-            if path.is_symlink() and not path.exists():
-                broken.append(str(path))
+        if root.is_dir():
+            broken.extend(_find_broken_symlinks(root))
     if broken:
         shown = broken[:10]
         more = f" (+{len(broken) - 10} more)" if len(broken) > 10 else ""
@@ -160,7 +177,9 @@ ALL_CHECKS = (
 
 
 def run_all() -> list[CheckResult]:
-    results: list[CheckResult] = []
-    for check in ALL_CHECKS:
-        results.extend(check())
-    return results
+    # Checks are independent and I/O-bound (subprocess waits, disk walks) -
+    # run them concurrently so total time is roughly the slowest check
+    # rather than the sum of all of them.
+    with ThreadPoolExecutor(max_workers=len(ALL_CHECKS)) as pool:
+        results_per_check = pool.map(lambda check: check(), ALL_CHECKS)
+    return [result for results in results_per_check for result in results]

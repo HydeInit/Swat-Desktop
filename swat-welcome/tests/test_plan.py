@@ -9,7 +9,7 @@ def test_build_plan_empty_selection():
 def test_build_plan_lists_host_packages_and_profile_names():
     core = find_profile("core")
     plan = build_plan([core])
-    assert "git" in plan
+    assert "podman" in plan
     assert core.name in plan
     assert "Dry run" in plan
 
@@ -18,7 +18,7 @@ def test_build_plan_dedupes_shared_host_packages():
     core = find_profile("core")
     java = find_profile("java")
     plan = build_plan([core, java])
-    # "git" appears in both profiles' host_packages - should be listed once
-    # in the consolidated host packages line, not duplicated.
+    # "podman" appears in both profiles' host_packages - should be listed
+    # once in the consolidated host packages line, not duplicated.
     host_line = next(line for line in plan.splitlines() if line.startswith("Host packages"))
-    assert host_line.count("git") == 1
+    assert host_line.count("podman") == 1

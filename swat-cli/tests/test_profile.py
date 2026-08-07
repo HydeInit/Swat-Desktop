@@ -16,4 +16,4 @@ def test_load_profiles_returns_valid_profiles():
 def test_find_profile_returns_matching_profile():
     core = find_profile("core")
     assert core.id == "core"
-    assert "git" in core.host_packages
+    assert "podman" in core.host_packages

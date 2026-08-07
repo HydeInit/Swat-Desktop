@@ -62,25 +62,27 @@ def load_schema(profiles_dir: Path | None = None) -> dict:
     return json.loads(schema_path.read_text())
 
 
+def _load_profile_file(yaml_path: Path, schema: dict) -> Profile:
+    data = yaml.safe_load(yaml_path.read_text())
+    try:
+        jsonschema.validate(instance=data, schema=schema)
+    except jsonschema.ValidationError as exc:
+        raise ProfileError(f"{yaml_path.name}: {exc.message}") from exc
+    return Profile.from_dict(data)
+
+
 def load_profiles(profiles_dir: Path | None = None) -> list[Profile]:
     directory = profiles_dir or _profiles_dir()
     if not directory.is_dir():
         raise ProfileError(f"profiles directory not found: {directory}")
 
     schema = load_schema(directory)
-    profiles = []
-    for yaml_path in sorted(directory.glob("*.yaml")):
-        data = yaml.safe_load(yaml_path.read_text())
-        try:
-            jsonschema.validate(instance=data, schema=schema)
-        except jsonschema.ValidationError as exc:
-            raise ProfileError(f"{yaml_path.name}: {exc.message}") from exc
-        profiles.append(Profile.from_dict(data))
-    return profiles
+    return [_load_profile_file(p, schema) for p in sorted(directory.glob("*.yaml"))]
 
 
 def find_profile(profile_id: str, profiles_dir: Path | None = None) -> Profile:
-    for profile in load_profiles(profiles_dir):
-        if profile.id == profile_id:
-            return profile
-    raise ProfileError(f"no such profile: {profile_id}")
+    directory = profiles_dir or _profiles_dir()
+    yaml_path = directory / f"{profile_id}.yaml"
+    if not yaml_path.is_file():
+        raise ProfileError(f"no such profile: {profile_id}")
+    return _load_profile_file(yaml_path, load_schema(directory))

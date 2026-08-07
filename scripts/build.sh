@@ -4,6 +4,8 @@ set -e
 
 cd "$(dirname "$0")/.."
 
+./scripts/sync-branding.sh
+
 swat_version="0.1.0"
 debian_base="13"
 build_arch="amd64"

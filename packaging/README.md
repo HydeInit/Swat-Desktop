@@ -28,3 +28,8 @@ Minimal package (default wallpaper only) that exists to validate the
 build → sign → publish → install pipeline before anything with real
 behavior is packaged the same way. See `docs/decisions.md` for what was
 verified.
+
+Its wallpaper asset is copied from `branding/` (the source of truth,
+also used by the ISO itself) by `scripts/sync-branding.sh` — run that
+first, since `dpkg-buildpackage` doesn't call it automatically the way
+`scripts/build.sh` does for the ISO.

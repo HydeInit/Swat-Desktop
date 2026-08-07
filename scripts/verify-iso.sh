@@ -3,13 +3,10 @@
 # Usage: scripts/verify-iso.sh [path/to/image.iso]
 set -e
 
+. "$(dirname "$0")/lib.sh"
 cd "$(dirname "$0")/.."
 
-# Same "most recent ISO in output/" resolution as test-in-qemu.sh.
-iso="$1"
-if [ -z "$iso" ]; then
-	iso=$(find output -maxdepth 1 -name '*.iso' -printf '%T@ %p\n' 2>/dev/null | sort -n | tail -n1 | cut -d' ' -f2-)
-fi
+iso="${1:-$(latest_iso)}"
 
 fail=0
 note() { echo "  [ok] $1"; }
