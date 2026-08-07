@@ -17,3 +17,13 @@ fonts-dejavu
 # branding used everywhere else. Set as default via skel xfconf files.
 blackbird-gtk-theme
 papirus-icon-theme
+
+# Polkit authentication agent - pkexec (see system.list.chroot) has no way
+# to show a password prompt without one. Debian has no XFCE-native agent;
+# lxpolkit is the leanest GTK3 option (mate-polkit hard-depends on
+# accountsservice, lxqt-policykit/polkit-kde-agent-1 drag in an unrelated
+# Qt/KDE stack). Its own shipped autostart entry has
+# NotShowIn=...XFCE;... though, so it won't run under XFCE as-is - see
+# includes.chroot_after_packages/etc/xdg/autostart/lxpolkit.desktop, which
+# overrides it with one that does.
+lxpolkit

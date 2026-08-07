@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Authentication Agent
+Comment=Polkit authentication agent - needed for pkexec prompts (SWAT Welcome installs, the SWAT installer launcher)
+Exec=lxpolkit
+NoDisplay=true
+X-GNOME-Autostart-enabled=true
