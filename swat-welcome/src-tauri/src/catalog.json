@@ -30,12 +30,7 @@
     "name": "GitHub CLI",
     "description": "gh - GitHub from the terminal",
     "category": "coding",
-    "install": {
-      "type": "apt_repo",
-      "key_url": "https://cli.github.com/packages/githubcli-archive-keyring.gpg",
-      "repo_line": "deb [arch=amd64 signed-by=/etc/apt/keyrings/githubcli.gpg] https://cli.github.com/packages stable main",
-      "package": "gh"
-    }
+    "install": { "type": "apt", "package": "gh" }
   },
   {
     "id": "podman-desktop",
@@ -43,9 +38,13 @@
     "description": "GUI for container management",
     "category": "coding",
     "install": {
-      "type": "flatpak",
-      "remote": "flathub",
-      "app_id": "io.podman_desktop.PodmanDesktop"
+      "type": "script",
+      "command": "bash",
+      "args": [
+        "-c",
+        "apt-get install -y flatpak && flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo && flatpak install -y flathub io.podman_desktop.PodmanDesktop"
+      ],
+      "privileged": true
     }
   },
   {
@@ -55,8 +54,8 @@
     "category": "ai",
     "install": {
       "type": "script",
-      "command": "python3",
-      "args": ["-m", "pip", "install", "--user", "--upgrade", "--break-system-packages", "aider-chat"],
+      "command": "sh",
+      "args": ["-c", "curl -LsSf https://aider.chat/install.sh | sh"],
       "privileged": false
     }
   },
@@ -67,8 +66,11 @@
     "category": "ai",
     "install": {
       "type": "script",
-      "command": "npm",
-      "args": ["install", "-g", "@github/copilot"],
+      "command": "bash",
+      "args": [
+        "-c",
+        "curl -fsSL https://deb.nodesource.com/setup_22.x | bash - && apt-get install -y nodejs && npm install -g @github/copilot"
+      ],
       "privileged": true
     }
   }
