@@ -1,13 +1,19 @@
 # SWAT Welcome
 
-First-boot welcome experience, built with Tauri. Static UI scaffold only
-right now - five screens (Welcome, Customisations, Recommended installs,
-Installing, Finish), navigable, on-brand, no install logic wired up.
-Nothing here actually installs anything yet.
+First-boot welcome experience, built with Tauri. Five screens (Welcome,
+Customisations, Recommended installs, Installing, Finish), with a real
+install engine behind it - one executor per install method (apt,
+apt+third-party-repo, script, flatpak), streaming output live.
 
-See issue #19 for what's still needed: real catalog data, the install
-engine, polkit wiring, the first-boot trigger, packaging, and ISO
-integration.
+Built and packaged automatically as part of `scripts/build.sh` (dropped
+into `config/packages.chroot/`, which live-build installs directly - no
+apt repo needed) and launched once per user on first login via the
+autostart entry in `config/includes.chroot_after_packages/etc/xdg/autostart/`.
+
+See issue #19 for what's still open: privileged installs need a polkit
+authentication agent wired into the live/installed session (added, but
+not yet proven against a real login flow), and the catalog itself is a
+representative set, not a fully exhaustive one.
 
 ## Requirements (Debian trixie, all via apt, no extra repos)
 

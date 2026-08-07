@@ -42,6 +42,10 @@ packaging/*/debian/*.debhelper.log
 packaging/*/debian/debhelper-build-stamp
 packaging/*/debian/swat-*/
 
+# swat-welcome's built .deb, dropped here by scripts/build.sh on every
+# build - live-build installs anything in this directory automatically
+config/packages.chroot/*.deb
+
 # Python build/dev artifacts (swat-cli)
 swat-cli/.venv/
 swat-cli/**/__pycache__/

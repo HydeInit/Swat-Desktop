@@ -6,6 +6,15 @@ cd "$(dirname "$0")/.."
 
 ./scripts/sync-branding.sh
 
+# Built fresh every run (no caching) and dropped into config/packages.chroot -
+# live-build installs anything there directly during the chroot stage, no
+# apt repo or signing needed.
+echo "Building swat-welcome..."
+(cd swat-welcome && npm install && npm run tauri build)
+mkdir -p config/packages.chroot
+cp -f "swat-welcome/src-tauri/target/release/bundle/deb/SWAT Welcome_0.1.0_amd64.deb" \
+	config/packages.chroot/swat-welcome_0.1.0_amd64.deb
+
 swat_version="0.1.0"
 debian_base="13"
 build_arch="amd64"
