@@ -1,0 +1,75 @@
+[
+  {
+    "id": "firefox",
+    "name": "Firefox",
+    "description": "Mozilla's browser, ESR channel",
+    "category": "browsers",
+    "install": { "type": "apt", "package": "firefox-esr" }
+  },
+  {
+    "id": "chromium",
+    "name": "Chromium",
+    "description": "Open-source base of Chrome",
+    "category": "browsers",
+    "install": { "type": "apt", "package": "chromium" }
+  },
+  {
+    "id": "vscode",
+    "name": "Visual Studio Code",
+    "description": "Microsoft's code editor",
+    "category": "coding",
+    "install": {
+      "type": "apt_repo",
+      "key_url": "https://packages.microsoft.com/keys/microsoft.asc",
+      "repo_line": "deb [arch=amd64 signed-by=/etc/apt/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main",
+      "package": "code"
+    }
+  },
+  {
+    "id": "gh-cli",
+    "name": "GitHub CLI",
+    "description": "gh - GitHub from the terminal",
+    "category": "coding",
+    "install": {
+      "type": "apt_repo",
+      "key_url": "https://cli.github.com/packages/githubcli-archive-keyring.gpg",
+      "repo_line": "deb [arch=amd64 signed-by=/etc/apt/keyrings/githubcli.gpg] https://cli.github.com/packages stable main",
+      "package": "gh"
+    }
+  },
+  {
+    "id": "podman-desktop",
+    "name": "Podman Desktop",
+    "description": "GUI for container management",
+    "category": "coding",
+    "install": {
+      "type": "flatpak",
+      "remote": "flathub",
+      "app_id": "io.podman_desktop.PodmanDesktop"
+    }
+  },
+  {
+    "id": "aider",
+    "name": "Aider",
+    "description": "AI pair programming in your terminal",
+    "category": "ai",
+    "install": {
+      "type": "script",
+      "command": "python3",
+      "args": ["-m", "pip", "install", "--user", "--upgrade", "--break-system-packages", "aider-chat"],
+      "privileged": false
+    }
+  },
+  {
+    "id": "copilot-cli",
+    "name": "GitHub Copilot CLI",
+    "description": "Copilot from the terminal",
+    "category": "ai",
+    "install": {
+      "type": "script",
+      "command": "npm",
+      "args": ["install", "-g", "@github/copilot"],
+      "privileged": true
+    }
+  }
+]

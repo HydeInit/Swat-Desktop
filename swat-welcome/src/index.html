@@ -73,63 +73,9 @@
           <button class="tab" role="tab" data-tab="ai">AI CLIs</button>
         </div>
 
-        <div class="tab-panel" data-tab-panel="browsers">
-          <label class="catalog-item">
-            <input type="checkbox" />
-            <span>
-              <span class="catalog-name">Firefox</span>
-              <span class="catalog-desc">Mozilla's browser, ESR channel</span>
-            </span>
-          </label>
-          <label class="catalog-item">
-            <input type="checkbox" />
-            <span>
-              <span class="catalog-name">Chromium</span>
-              <span class="catalog-desc">Open-source base of Chrome</span>
-            </span>
-          </label>
-        </div>
-
-        <div class="tab-panel" data-tab-panel="coding" hidden>
-          <label class="catalog-item">
-            <input type="checkbox" />
-            <span>
-              <span class="catalog-name">Visual Studio Code</span>
-              <span class="catalog-desc">Microsoft's code editor</span>
-            </span>
-          </label>
-          <label class="catalog-item">
-            <input type="checkbox" />
-            <span>
-              <span class="catalog-name">GitHub CLI</span>
-              <span class="catalog-desc">gh - GitHub from the terminal</span>
-            </span>
-          </label>
-          <label class="catalog-item">
-            <input type="checkbox" />
-            <span>
-              <span class="catalog-name">Podman Desktop</span>
-              <span class="catalog-desc">GUI for container management</span>
-            </span>
-          </label>
-        </div>
-
-        <div class="tab-panel" data-tab-panel="ai" hidden>
-          <label class="catalog-item">
-            <input type="checkbox" />
-            <span>
-              <span class="catalog-name">Aider</span>
-              <span class="catalog-desc">AI pair programming in your terminal</span>
-            </span>
-          </label>
-          <label class="catalog-item">
-            <input type="checkbox" />
-            <span>
-              <span class="catalog-name">GitHub Copilot CLI</span>
-              <span class="catalog-desc">Copilot from the terminal</span>
-            </span>
-          </label>
-        </div>
+        <div class="tab-panel" data-tab-panel="browsers"></div>
+        <div class="tab-panel" data-tab-panel="coding" hidden></div>
+        <div class="tab-panel" data-tab-panel="ai" hidden></div>
 
         <footer class="screen-nav">
           <button class="btn btn-ghost" data-action="back">Back</button>
@@ -141,21 +87,17 @@
       <!-- 4. Installing -->
       <section class="screen" id="screen-installing" data-screen hidden>
         <h1>Installing</h1>
-        <p class="lede">This is a preview - nothing is actually being installed yet.</p>
+        <p class="lede">Sit tight - this can take a few minutes depending on what you picked.</p>
 
         <div class="progress-track">
-          <div class="progress-fill"></div>
+          <div class="progress-fill" id="install-progress" style="width: 0%"></div>
         </div>
 
-        <div class="log">
-          <div class="log-line">Installing Visual Studio Code...</div>
-          <div class="log-line">Installing GitHub CLI...</div>
-          <div class="log-line">Installing Aider...</div>
-        </div>
+        <div class="log" id="install-log"></div>
 
         <footer class="screen-nav">
           <span class="spacer"></span>
-          <button class="btn btn-primary" data-action="next">Continue</button>
+          <button class="btn btn-primary" data-action="next" id="installing-continue" disabled>Continue</button>
         </footer>
       </section>
 
@@ -163,9 +105,9 @@
       <section class="screen" id="screen-finish" data-screen hidden>
         <div class="screen-center">
           <h1>You're all set.</h1>
-          <p class="lede">
-            3 apps queued for install. You can reopen SWAT Welcome any time
-            from the applications menu to change your mind.
+          <p class="lede" id="finish-summary">
+            You can reopen SWAT Welcome any time from the applications menu
+            to change your mind.
           </p>
         </div>
         <footer class="screen-nav">
