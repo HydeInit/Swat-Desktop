@@ -27,6 +27,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
-      - uses: reviewdog/action-actionlint@60f9666828d33cc321ea5a5c02042d940f790682 # v1
+      - uses: reviewdog/action-actionlint@619a81ec64ff8c0211cd6146eb2b21e8f1d7f440 # v1
         with:
           fail_level: error
